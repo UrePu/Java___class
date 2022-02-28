@@ -4,6 +4,9 @@ import java.util.Scanner;
 
 public class Day01_6 {
 	public static void main(String[] args) {
+		
+		// 최신화?
+		
 		Scanner sc = new Scanner(System.in);
 
 		System.out.print("순번 입력 : ");		String 순번 = sc.next();

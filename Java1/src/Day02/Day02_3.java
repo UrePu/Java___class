@@ -32,38 +32,5 @@ public class Day02_3 {
 		
 		
 		
-		//문제2 : 지폐 세기
-		/* 
-		 * [입력조건]
-		 * 		금액
-		 * [ 조건 ]
-		 * 		십만원 부터 배구언까지의 개수 세기
-		 * [ 출력조건 ]
-		 * 		예) 356789 입력시
-		 * 		십만원3장
-		 * 		만원 5장
-		 * 		천원 6장
-		 * 		백원 7개
-		 */
-		
-		System.out.print("금액을 입력하세요 :"); String value3 = sc.next();
-		int num3 = Integer.parseInt(value3);
-		
-		int val1 = (int)(num3 / 100000) ;
-		
-		num3 = num3 - val1 * 100000 ;
-		
-		int val2 = (int)(num3/10000);
-		
-		num3 = num3 - val2 * 10000 ;
-		
-		int val3 = (int)(num3/1000);
-		
-		num3 = num3 - val3 * 1000 ;
-		
-		int val4 = (int)(num3/100);
-		
-		System.out.println("10만원: " + val1 + "장\n1만원: " + val2 + "장\n1천원: " + val3 + "장\n1백원: " + val4+ "개" );
-		
 	}
 }

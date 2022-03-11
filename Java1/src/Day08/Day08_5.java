@@ -124,7 +124,7 @@ public class Day08_5 {
 	void loan(String id) {
 		while(true) {
 			System.out.println(" --------------- 대출 메뉴 ------------------");
-			System.out.println("1.상품 목록 2.대출 3.상환금 조회 4.상환여부 5.취소");
+			System.out.println("1.상품 목록 2.대출 3.상환금 조회 4.상환 5.취소");
 			System.out.print(">>>>>>>: "); int ch = scan.nextInt();
 			Loan loan = new Loan();
 			if(ch == 1) {loan.loanList(id);}

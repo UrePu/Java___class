@@ -54,6 +54,7 @@ public class Loan {
 						Day08_5.loan[ch].loanRe = false;
 						Day08_5.account[i].amount += Day08_5.loan[ch].loanAmount;
 						Day08_5.account[i].loanName = Day08_5.loan[ch].loanName;
+						System.err.println("알림)) 대출 완료되었습니다.");
 					}
 					i++;
 				}
@@ -74,7 +75,23 @@ public class Loan {
 		}
 	}
 	public void loanReB(String id) {
-		
+		int i = 0;
+		for(Account temp : Day08_5.account) {
+			if(temp != null && temp.accountOwner.equals(id)) {
+				int j = 0;
+				for(Loan temp2 : Day08_5.loan) {
+					if(temp2 != null && temp2.loanName.equals(temp.loanName)) {
+						Day08_5.account[i].amount -= (Day08_5.loan[j].loanAmount * Day08_5.loan[j].loanInterest);
+						Day08_5.loan[j].loanRe = true;
+						Day08_5.loan[j].loanPerson = null;
+						Day08_5.account[i].loanName = null;
+						System.out.println("알림)) 상환 완료");
+					}
+					j++;
+				}
+			}
+			i++;
+		}
 	}
 	
 	

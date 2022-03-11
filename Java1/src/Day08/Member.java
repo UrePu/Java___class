@@ -105,7 +105,7 @@ public class Member {
 				
 				System.out.println("전화번호 입력 : ");
 				String phone = Day08_5.scan.next();
-
+				
 				for (Member temp : Day08_5.members) {
 
 					if (temp.id != null && temp.name.equals(id) && temp.id.equals(phone)) {

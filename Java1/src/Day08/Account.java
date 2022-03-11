@@ -75,7 +75,7 @@ public class Account {
 		int i = 0;
 		for(Account temp : Day08_5.account) {
 			
-			if (temp != null && temp.accountOwner.equals(id) && temp.accountOwner.equals(accNum)) {
+			if (temp != null && temp.accountOwner.equals(id) && temp.accountNumber.equals(accNum)) {
 				if(num < temp.amount) {
 					Day08_5.account[i].amount -= num;
 					System.out.println(num + "원 출금, 남은금액: " + temp.amount);

@@ -86,7 +86,7 @@ public class Account {
 				대상 = temp.accountOwner;
 				break;
 			}
-			if (temp != null && temp.accountOwner.equals(id) && temp.accountOwner.equals(accNum)) {
+			if (temp != null && temp.accountOwner.equals(id) && temp.accountOwner.equals(accNum2)) {
 				if(num < temp.amount) {
 					System.out.println("이체할 대상이 " + 대상 + "님이 맞습니까?");
 					System.out.println("1. 예 2. 아니오");

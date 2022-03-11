@@ -35,6 +35,7 @@ public class Member {
 					// 만약 공백 아니면서 입력받은 아이디와 동일
 					System.err.println("알림>> 현재 사용중인 아이디입니다");
 					idcheck = false;
+					break;
 					// 아이디가 중복되었기 때문에 false
 				}
 			}
@@ -43,15 +44,16 @@ public class Member {
 			
 			// 2. 4개 변수 -> 객체화 -> 1개
 			Member member = new Member(id, pw, name, phone); // 모든 필드 받는 생성자로 객체 생성
-			int i = 0; 
-			for( Member temp : Day08_5.members)	{
-				 if(temp == null) { // 비어있으면 빈 인덱스에 저장
-					 Day08_5.members[i] = member; 
-					 break;
-					 // 회원가입 메소드 종료 / 반환 = true
-				 }
-			 } i++;
-			 		
+			 
+			int i = 0 ; // 반복횟수 [ 인덱스체크 ]
+			for( Member temp : Day08_5.members ) {
+				if( temp == null ) { // 빈공간이면 
+					Day08_5.members[i] = member; // 빈 인덱스에 새로운 회원 대입
+					 // 회원가입 메소드 종료 ~~~~~~~ [ 반환 : true ]
+					break;
+				}
+				i++; // i증가 
+			}
 			 if(idcheck) {
 				 System.out.println("회원가입 성공");
 			 }

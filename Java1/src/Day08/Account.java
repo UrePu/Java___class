@@ -35,7 +35,7 @@ public class Account {
 		Account account = new Account(num, 0, id);
 		int j = 0; // 반복횟수 [ 인덱스 ]
 		for( Account temp : Day08_5.account ) {
-			if( temp == null ) { // null 찾기 [ null 찾았을때 null-1 하면 마지막회원 ]
+			if( temp == null ) { // null 찾기
 					Day08_5.account[j] = account;
 					break; // 끝내기 
 			}
@@ -49,11 +49,13 @@ public class Account {
 		System.out.print("입금할 금액 설정: "); int num = Day08_5.scan.nextInt();
 		
 		boolean depoCheck = false ;
+		int j = 0;
 		for(Account temp : Day08_5.account) {
 			if (temp != null && temp.accountOwner.equals(id) && temp.accountNumber.equals(accNum)) {
-				temp.amount += num;
+				Day08_5.account[j].amount += num;
 				depoCheck = true;
 			}
+			j++;
 		}
 		
 		if(depoCheck) System.out.println("입금 성공");
@@ -64,14 +66,16 @@ public class Account {
 		System.out.println("----출금----");
 		System.out.print("출금할 계좌번호: "); String accNum = Day08_5.scan.next();
 		System.out.print("출금할 금액 설정: "); int num = Day08_5.scan.nextInt();
-		
+		int i = 0;
 		for(Account temp : Day08_5.account) {
+			
 			if (temp != null && temp.accountOwner.equals(id) && temp.accountOwner.equals(accNum)) {
 				if(num < temp.amount) {
-					temp.amount -= num;
+					Day08_5.account[i].amount -= num;
 					System.out.println(num + "원 출금, 남은금액: " + temp.amount);
 				}else System.out.println("잔액 부족");
 			}
+			i++;
 		}
 	}//출금 끝
 	public void transferAcc(String id) { // 이체 시작
@@ -79,37 +83,45 @@ public class Account {
 		System.out.print("이체할(대상) 계좌번호: "); String accNum = Day08_5.scan.next();
 		System.out.print("출금할(본인) 계좌번호: "); String accNum2 = Day08_5.scan.next();
 		System.out.print("출금할 금액 설정: "); int num = Day08_5.scan.nextInt();
-		
+		int i = 0;
 		for(Account temp : Day08_5.account) {
-			String 대상 = null ;
-			if(temp != null && temp.accountNumber.equals(accNum)) {
-				대상 = temp.accountOwner;
-				break;
-			}
-			if (temp != null && temp.accountOwner.equals(id) && temp.accountOwner.equals(accNum2)) {
+			
+			
+			if (temp != null && temp.accountOwner.equals(id) && temp.accountNumber.equals(accNum2)) {
 				if(num < temp.amount) {
-					System.out.println("이체할 대상이 " + 대상 + "님이 맞습니까?");
+					System.out.println("이체할 번호가 " + accNum + "이 맞습니까?");
 					System.out.println("1. 예 2. 아니오");
 					System.out.print(">>>>>>: "); int ch = Day08_5.scan.nextInt();
 					if(ch == 1){
-						temp.amount -= num;
-						System.out.println(대상 +"님에게 " +num + "원 송금, 남은금액: " + temp.amount);
+						Day08_5.account[i].amount -= num;
+						System.out.println(accNum +"으로 " +num + "원 송금, 남은금액: " + temp.amount);
+						int j = 0;
 						for(Account temp2 : Day08_5.account) {
 							if(temp2 != null && temp2.accountNumber.equals(accNum)) {
-								temp2.amount += num;
+								Day08_5.account[j].amount += num;
 								break;
 							}
+							j++;
 						}
 					}else if(ch == 2) {
+						System.err.println("취소하셨습니다.");
 					}
 					
 				}else System.out.println("잔액 부족");
 			}
+			i++;
 		}
 	}
 	public void loanAcc(String id) {
 	}
 	public void listAcc(String id) {
+		int i = 0;
+		for(Account temp : Day08_5.account) {
+			
+			if(temp != null && temp.accountOwner.equals(id)) {
+				System.out.println(temp.accountNumber + ":\t " + temp.amount + "\t"+ temp.accountOwner);
+			}
+		}
 	}
 
 }

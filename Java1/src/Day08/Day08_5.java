@@ -9,7 +9,8 @@ public class Day08_5 {
 		//회원이 계좌 만들어서 사용
 	//관리자(은행원) 대출 상품을 등록해서 회원들이 선택해서 대출 사용
 	//설계: 통장, 대출, 회원
-	
+	//대출탭. 상품이름 - 선택하면 자기 계좌 선택해서 들어오게.
+	// 누가 어느거 선택했는지도.
 	static Scanner scan = new Scanner(System.in);
 	static Member[] members = new Member[100];
 	static Account[] account = new Account[100];

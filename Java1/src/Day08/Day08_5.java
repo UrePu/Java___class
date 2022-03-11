@@ -54,7 +54,44 @@ public class Day08_5 {
 			System.out.println(" --------------- 직원 메뉴 ------------------");
 			System.out.println("1. 대출 상품 등록 2. 대출자 목록 3. 로그아웃");
 			System.out.print(">>>>>>: "); int ch = scan.nextInt();
-			Loan loan = new Loan();
+			Loan loan = new Loan(); 
+			
+			if(ch == 1) {
+				System.out.println("대출 상품 등록-------------");
+				System.out.println("상품 이름 : "); String loanName = scan.next();
+				System.out.println("금액 : "); int loanAmount = scan.nextInt();
+				System.out.println("이자 : "); double loanInterest = scan.nextDouble();
+				
+				boolean loanNcheck = true;
+				for(Loan temp : Day08_5.loan) {
+					if(temp != null && temp.loanName.equals(loanName)) {
+						System.out.println("알림>> 이미 있는 대출 상품입니다");
+						loanNcheck = false;
+						break;
+					}
+				}
+				Loan loan123 = new Loan(loanName, loanAmount, loanInterest);
+				if(loanNcheck) {
+					int i = 0 ; // 반복횟수 [ 인덱스체크 ]
+					for( Loan temp : Day08_5.loan ) {
+						if( temp == null ) { // 빈공간이면 
+							Day08_5.loan[i] = loan123; // 빈 인덱스에 새로운 회원 대입
+							 // 회원가입 메소드 종료 ~~~~~~~ [ 반환 : true ]
+							break;
+						}
+						i++; // i증가 
+					}
+				}
+			}else if(ch==2) {
+				for(Loan temp : Day08_5.loan) {
+					if(temp != null && temp.equals(loan.loanName)) {
+						System.out.printf("%s\t%s",temp.loanName,temp.loanPerson);
+					}
+				}
+				
+			}else if(ch==3) {
+				return;
+			}else System.out.println("잘못된 번호입니다");
 			
 		}
 		
@@ -87,8 +124,16 @@ public class Day08_5 {
 	void loan(String id) {
 		while(true) {
 			System.out.println(" --------------- 대출 메뉴 ------------------");
-			System.out.println("1.상품 목록 2.대출 3.대출 내역 5.상환금 조회 6.상환여부 7.취소");
-	
+			System.out.println("1.상품 목록 2.대출 3.상환금 조회 4.상환여부 5.취소");
+			System.out.print(">>>>>>>: "); int ch = scan.nextInt();
+			Loan loan = new Loan();
+			if(ch == 1) {loan.loanList(id);}
+			else if(ch == 2) {loan.loanLoan(id);}
+			else if(ch == 3) {loan.loanRepay(id);}
+			else if(ch == 4) {loan.loanReB(id);}
+			else if(ch == 5){return;}
+			else {System.err.println("오류)) 알수없는 번호입니다");}
+			
 		}
 		
 	}

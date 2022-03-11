@@ -50,6 +50,13 @@ public class Day08_5 {
 		}
 	}
 	void accadmin() {
+		while(true) {
+			System.out.println(" --------------- 직원 메뉴 ------------------");
+			System.out.println("1. 대출 상품 등록 2. 대출자 목록 3. 로그아웃");
+			System.out.print(">>>>>>: "); int ch = scan.nextInt();
+			Loan loan = new Loan();
+			
+		}
 		
 	}
 	void acc(String id) {//계좌 탭 시작
@@ -69,14 +76,21 @@ public class Day08_5 {
 				else if( ch ==2 ) 	{account.depositAcc(id);}		//입금
 				else if( ch == 3 ) 	{account.withdrawAcc(id);}	//출금
 				else if( ch == 4 ) 	{account.transferAcc(id);}	//이체
-				else if( ch == 5 ) 	{account.loanAcc(id);}		//대출
+				else if( ch == 5 ) 	{loan(id);}		//대출
 				else if( ch == 6 ) 	{account.listAcc(id);}		//계좌 목록
 				else if( ch == 7 ) 	{ return; } // 일반회원메뉴 메소드 종료 [ 로그아웃 ] 
 				else { System.err.println(" 알림]] 알수 없는 번호입니다. "); }
 			}	
 		
 	}
-
-
+	
+	void loan(String id) {
+		while(true) {
+			System.out.println(" --------------- 대출 메뉴 ------------------");
+			System.out.println("1.상품 목록 2.대출 3.대출 내역 5.상환금 조회 6.상환여부 7.취소");
+	
+		}
+		
+	}
 	
 }

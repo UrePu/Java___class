@@ -1,6 +1,5 @@
 package Day08;
 
-import Day07.Day07_5;
 import Day07.Member;
 
 public class Account {
@@ -8,6 +7,7 @@ public class Account {
 	String accountNumber;
 	int amount;
 	String accountOwner;
+	String loanName;
 	//2. 생성자
 	public Account() {}
 	public Account(String accountNumber, int amount, String accountOwner) {
@@ -15,6 +15,12 @@ public class Account {
 		this.amount = amount;
 		this.accountOwner = accountOwner;
 
+	}
+	public Account(String accountNumber, int amount, String accountOwner, String loanName) {
+		this.accountNumber = accountNumber;
+		this.amount = amount;
+		this.accountOwner = accountOwner;
+		this.loanName = loanName;
 	}
 	//3. 메소드
 	boolean createAcc(String id) {
@@ -113,6 +119,11 @@ public class Account {
 		}
 	}
 	public void loanAcc(String id) {
+		//Loan 리스트 출력
+		//인덱스 번호 고르면
+		//계좌번호 치고
+		//거기에 해당 인덱스의 액수가 들어가고
+		//그 인덱스의 이름이 계좌번호랑 같은 인덱스의 loanName 에 들어가면.;
 	}
 	public void listAcc(String id) {
 		int i = 0;

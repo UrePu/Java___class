@@ -84,8 +84,8 @@ public class Day08_5 {
 				}
 			}else if(ch==2) {
 				for(Loan temp : Day08_5.loan) {
-					if(temp != null && temp.equals(loan.loanName)) {
-						System.out.printf("%s\t%s",temp.loanName,temp.loanPerson);
+					if(temp != null &&  temp.loanPerson != null) {
+						System.out.printf("%s\t%s\n",temp.loanName,temp.loanPerson);
 					}
 				}
 				

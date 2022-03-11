@@ -42,7 +42,7 @@ public class Loan {
 		
 		boolean loanCheck = true;
 		if(Day08_5.loan[ch].loanName != null) {
-			System.out.println( Day08_5.loan[ch] + "를 대출 하시겠습니까?");
+			System.out.println( Day08_5.loan[ch].loanName + "를 대출 하시겠습니까?");
 			System.out.println("1. 대출 2.취소"); int ch2 = Day08_5.scan.nextInt();
 			
 			if(ch2 == 1) {
@@ -68,7 +68,7 @@ public class Loan {
 			if(temp != null && temp.accountOwner.equals(id)) {
 				for(Loan temp2 : Day08_5.loan) {
 					if(temp2 != null && temp2.loanName.equals(temp.loanName)) {
-						System.out.println(temp2.loanName + "상품의 상환금: " + (temp2.loanAmount * temp2.loanInterest));
+						System.out.printf("%s 상품의 상환금: %.2f",temp2.loanName, temp2.loanAmount * temp2.loanInterest);
 					}
 				}
 			}

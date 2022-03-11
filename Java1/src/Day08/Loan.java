@@ -10,8 +10,16 @@ public class Loan {
 	//상품 (상품명,액수,"0")
 	//빌려간사람(상품명, 액수, members.id)
 	public Loan(){};
-	public Loan(String loanName, int loanAmount) {
+	public Loan(String loanName, int loanAmount,double loanInterest) {
 		this.loanAmount = loanAmount;
 		this.loanName = loanName;
+		this.loanInterest = loanInterest;
+	}
+	public Loan(String loanName, int loanAmount,double loanInterest, String loanPerson, boolean loanRe) {
+		this.loanAmount = loanAmount;
+		this.loanName = loanName;
+		this.loanInterest = loanInterest;
+		this.loanPerson = loanPerson;
+		this.loanRe = loanRe;
 	}
 }

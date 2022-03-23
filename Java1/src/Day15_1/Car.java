@@ -15,6 +15,7 @@ public class Car {
 		// 1. 빈생성자
 	public Car() {}
 		// 2. 풀생성자
+	
 	public Car(LocalDate 날짜, String 차량번호, LocalTime 입차시간, LocalTime 출차시간, int 금액) {
 		this.날짜 = 날짜;
 		this.차량번호 = 차량번호;
@@ -22,6 +23,14 @@ public class Car {
 		this.출차시간 = 출차시간;
 		this.금액 = 금액;
 	}
+	public Car(LocalDate 날짜, String 차량번호, LocalTime 입차시간) {
+		
+		this.날짜 = 날짜;
+		this.차량번호 = 차량번호;
+		this.입차시간 = 입차시간;
+	}
+
+
 	// 메소드 
 	public LocalDate get날짜() {
 		return 날짜;

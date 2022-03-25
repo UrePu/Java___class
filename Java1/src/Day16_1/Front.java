@@ -58,15 +58,7 @@ public class Front {
 								
 							}else {
 								System.err.println("게임 종료");
-								int index = 0;
-								for(String temp : Controller.wordList) {
-									if(temp != null) {
-										Controller.wordList[index] = null;
-										index++;
-									}
-								}
-								System.out.println("내 점수: " + (index -1));
-								Controller.save(id, index -1);
+								
 								break;
 							}
 						}

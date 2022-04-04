@@ -1,2 +1,5 @@
-/controller/
 /dao/
+/controller/
+/dto/
+/view/
+/app/

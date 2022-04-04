@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import dto.Member;
 
@@ -84,11 +85,101 @@ public class MemberDao { // DB 접근객체
 		return false; // 로그인 실패
 	}
 		// 3. 아이디찾기 메소드 ( 인수 : 아이디찾기 시 필요한 이메일 )
-	public String findid( String email ) { return null;}
+	public String findid( String email ) { 
+		try {
+			// 1. SQL 작성
+			String sql = "select * from member where memail=?";
+			// 2. SQL 조작
+			ps = con.prepareStatement(sql);
+			ps.setString( 1 , email );
+			// 3. SQL 실행 
+			rs =  ps.executeQuery(); // select 실행문 -> rs  
+			// 4. SQL 결과
+			if( rs.next() ) { // 실행 결과의 다음 레코드(가로) 가져오기 
+				return rs.getString(2); // 필드(세로) 번호 
+				//rs.getString(가져올필드순서번호);
+			}
+		}catch(Exception e ) { System.out.println( "[SQL 오류]"+e  ); }
+		return null;
+	}
 		// 4. 비밀번호찾기 메소드 ( 인수 : 비밀번호찾기 시 필요한 아이디, 이메일 )
-	public String findpassword( String id , String email ) { return null;}
+	public String findpassword( String id , String email ) { 
+		try {
+			// 1. SQL 작성
+			String sql = "select * from member where mid=? and memail=?";
+			// 2. SQL 조작
+			ps = con.prepareStatement(sql);
+			ps.setString(1, id );	ps.setString(2, email );
+			// 3. SQL 실행
+			rs = ps.executeQuery();
+			// 4. SQL 결과
+			if( rs.next() ) {
+				return rs.getString(3); // 패스워드는 db테이블내 3번째 필드 이므로 3 
+			}
+		}catch(Exception e ) { System.out.println( "[SQL 오류]"+e  ); }
+		return null;
+	}
 	
+	public Member getmember( String id ) { 
+		try {
+			// 1. SQL 작성
+			String sql = "select * from member where mid=?";
+			// 2. SQL 조작
+			ps = con.prepareStatement(sql);
+			ps.setString(1, id );
+			// 3. SQL 실행
+			rs = ps.executeQuery();
+			// 4. SQL 결과
+			if( rs.next() ) {
+				Member member = new Member(
+						rs.getInt(1),
+						rs.getString(2),
+						rs.getString(3),
+						rs.getString(4),
+						rs.getString(5),
+						rs.getInt(6),
+						rs.getString(7));
+				return member; // 패스워드는 db테이블내 3번째 필드 이므로 3 
+			}
+		}catch(Exception e ) { System.out.println( "[SQL 오류]"+e  ); }
+		return null;
+	}
+	public boolean delete(int mnum) {
+		//1. SQL 작성
+		String sql = "delete from member where mnum = ?";
+		//2. 조작
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, mnum);
+			ps.executeUpdate();
+			return true;
+		} catch (Exception e) {
+			System.out.println("sql 오류 "+ e);
+		}
+		
+		//3. 실행
+		//4. 결과
+		return false;
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

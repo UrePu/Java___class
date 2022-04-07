@@ -3,7 +3,6 @@ package controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import controller.login.Login;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -12,20 +11,12 @@ import javafx.scene.layout.BorderPane;
 
 public class Main implements Initializable {
 				// Initializable : 해당 fxml이 열렸을때 초기값 메소드 제공 
-	
-	// * 현재 클래스의 메모리를 반환하는 방법
-		// 1. 현재 클래스로 객체 선언 
-	public static Main instance ;
-		// 2. 생성자에서 객체내 this 넣어주기 
-			// this : 현재클래스의 메모리 [ 새로운 메모리할당 X ]
-	public Main() { instance = this; }
-	
-	public static Main getmain() {
-		return instance;
+	public static Main instance;
+	public Main() {
+		instance = this;
 	}
-	//로그인 성공
 	
-    @FXML
+	@FXML
     private BorderPane borderpane; // fx:id 
 	
 	@Override

@@ -44,9 +44,8 @@ public class findpasswordpane implements Initializable {
     	// 2. db 메소드 호출 
     	String password = MemberDao.memberDao.findpassword(id, email);
     	// 3. 확인 
-    	
     	if( password != null ) {
-    		System.out.println(password);
+    		
     		// 이메일 전송 메소드 호출
     		Member.sendmail(email, password);
     		
@@ -57,6 +56,7 @@ public class findpasswordpane implements Initializable {
     	}else {
     		lblconfirm.setText("입력한 정보와 동일한 회원이 없습니다.");
     	}
+    	
     	
 
     }

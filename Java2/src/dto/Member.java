@@ -10,9 +10,9 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-
 public class Member { // 데이터 모델
 	
+	// 필드 
 	private int mnum; //회원번호
 	private String mid; // 아이디
 	private String mpassword; //회원비밀번호
@@ -21,8 +21,8 @@ public class Member { // 데이터 모델
 	private int mpoint;	// 포인트
 	private String msince; // 가입일
 	
+	// 생성자 
 	public Member() {}
-	
 	public Member(int mnum, String mid, String mpassword, String memail, String maddress, int mpoint, String msince) {
 		super();
 		this.mnum = mnum;
@@ -34,10 +34,11 @@ public class Member { // 데이터 모델
 		this.msince = msince;
 	}
 	
+	// 메소드 
 	public static void sendmail( String 받는사람이메일 , String 내용 ) {
 		//1. 보내는 사람 정보
-		String 보내는사람이메일 = "kimsunwj@naver.com"; 
-		String 보내는사람이메일비밀번호 = "qksdnjfcka123!"; 
+		String 보내는사람이메일 = "아이디@naver.com"; 
+		String 보내는사람이메일비밀번호 = "비밀번호"; 
 		//2. 호스트 설정 [ 네이버기준 = 고정 ]
 		Properties properties = new Properties(); // 컬렉션프레임워크 [ map컬렉션 ]
 		properties.put("mail.smtp.host","smtp.naver.com"); // 호스트 주소 
@@ -59,13 +60,12 @@ public class Member { // 데이터 모델
 			message.setFrom( new InternetAddress(보내는사람이메일) ); // 보내는사람 
 			message.addRecipient( Message.RecipientType.TO , new InternetAddress(받는사람이메일) ); // 받는사람이메일
 			// 내용 
-			message.setSubject("잎마켓 중고거래 회원님의 패스워드 찾기"); // 메일 전송 
+			message.setSubject("안산지역 중고거래 회원님의 패스워드 찾기"); // 메일 전송 
 			message.setText("회원님의 비밀번호 : " + 내용 );
 			// 전송
 			Transport.send(message);
 		}catch (Exception e) { System.out.println("메일전송실패 "  +e);}
 	}
-	
 	
 	public int getMnum() {
 		return mnum;
@@ -119,7 +119,7 @@ public class Member { // 데이터 모델
 		return msince;
 	}
 
-	public void setMsince(String msince) {
+	public void setMcince(String msince) {
 		this.msince = msince;
 	}
 	

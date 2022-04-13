@@ -45,7 +45,7 @@ public class findpasswordpane implements Initializable {
     	String password = MemberDao.memberDao.findpassword(id, email);
     	// 3. 확인 
     	if( password != null ) {
-    		
+//    		
     		// 이메일 전송 메소드 호출
     		Member.sendmail(email, password);
     		

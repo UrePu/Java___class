@@ -34,7 +34,7 @@ public class Member { // 데이터 모델
 		this.msince = msince;
 	}
 	
-	// 메소드 
+	 //메소드 
 	public static void sendmail( String 받는사람이메일 , String 내용 ) {
 		//1. 보내는 사람 정보
 		String 보내는사람이메일 = "아이디@naver.com"; 

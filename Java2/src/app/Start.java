@@ -1,5 +1,8 @@
 package app;
 
+import controller.Chatting;
+import controller.login.Login;
+import dao.RoomDao;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -36,6 +39,17 @@ public class Start extends Application {
 			// 2. 현대 scene에 외부 스타일시트 적용
 			scene.getStylesheets().add( getClass().getResource("application.css").toExternalForm() );
 			
+		stage.setOnCloseRequest(e -> {
+			if(Login.member != null) {
+				RoomDao.roomDao.roomlivedelete(Login.member.getMid());
+				
+				if(Chatting.selectroom != null) {
+					RoomDao.roomDao.roomdelete(Chatting.selectroom.getRonum());
+					
+				}
+				Chatting.selectroom = null;
+			}
+		});
 		stage.setResizable(false); // 4. 스테이지 크기 변경 불가 
 		stage.setTitle("이젠마켓"); // 2.스테이지 창 이름
 		stage.show(); // 1. 스테이지 열기 

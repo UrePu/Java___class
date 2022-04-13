@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.HashMap;
+import java.util.Map;
 
 import dto.Member;
 
@@ -19,7 +21,7 @@ public class MemberDao { // DB 접근객체
 		try {
 			// DB연동 
 			Class.forName("com.mysql.cj.jdbc.Driver"); // 1. DB 드라이버 가져오기
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3307/javafx?serverTimezone=UTC",
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/javafx?serverTimezone=UTC",
 					"root","1234"); // 2. DB 주소 연결 
 		}
 		catch(Exception e ) { System.out.println( "[DB 연동 오류]"+e  ); }
@@ -188,6 +190,51 @@ public class MemberDao { // DB 접근객체
 		}catch(Exception e ) { System.out.println( "[SQL 오류]"+e  ); }
 		return null;
 	}
+	
+	// 9. (인수 : 테이블명)의 레코드 전체 개수 반환
+	public int counttotal( String tname ) {
+		String sql = "select count(*) from " + tname;
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			if( rs.next() ) {
+				return rs.getInt( 1 );
+			}
+		}catch( Exception e ) {}
+		return 0;
+	}
+	// 10. 날짜별로 가입자 수 반환
+	public Map<String, Integer> datetotal( ){
+		
+		Map<String, Integer> map  = new HashMap<>();
+		String sql = "select msince , count(*) from member group by msince";
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while( rs.next() ) {
+				map.put( rs.getString(1) , rs.getInt(2) );
+				// 결과의 해당 레코드의 첫번째필드[날짜]   , 두번째 필드[가입자수] 
+			}
+			return map;
+		}catch( Exception e ) {} return null;
+	}
+	// 11. 날짜별로 게시물 등록수 반환
+	public Map<String, Integer > datetotal2(){
+		Map<String , Integer > map = new HashMap<String, Integer>();
+		String sql = "select substring_index( bdate , ' ' , 1 )  , count(*) from board group by substring_index( bdate , ' ' , 1 )";
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while( rs.next() ) {
+				map.put( rs.getString( 1 ) , rs.getInt( 2 ) );
+			}
+			return map;
+		}catch( Exception e ) {}  return null;
+	}
+	
+	
+	
+	
 	
 }
 

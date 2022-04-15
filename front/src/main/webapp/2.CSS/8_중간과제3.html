@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span{
+        }
+        form {
+            width: 500px;
+            text-align: center;
+        }
+        input , textarea {
+            margin-left: 20px;
+        }
+        table {
+            text-align: left;
+        }
+        .btn {
+            padding: 5px;
+            background-color: #efefef;
+            border: 1px solid black;
+        }
+        .last {
+            text-align: right;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <h2>회원가입 폼</h2>
+        <hr>
+        <table>
+
+            <tr><td>아이디</td><td><input type="text"></td></tr>
+            <tr><td>비밀번호</td><td><input type="password"></td></tr>
+            <tr><td>비밀번호</td><td><input type="password"></td></tr>
+            <tr><td>이름</td><td><input type="text"></td></tr>
+            <tr><td>이메일</td><td><input type="text">@<select><option value="">직접입력</option></select></td></tr>
+            <tr><td>이메일수신</td><td><input type="radio" namne="receive" checked> 비수신<input type="radio" namne="receive"> 수신</td></tr>
+            <tr><td>가입경로</td><td><input type="checkbox">친구추천 <input type="checkbox">인터넷 검색 <input type="checkbox" checked> 기타 </td></tr>
+          <tr><td>인사말</td><td><textarea style="width: 250px; height: 70px;"></textarea></td></tr>
+            
+        </table>
+        <hr>
+            <div class="last"><input class="btn" type="button" value="저장하기"><input class="btn" type="submit" value="취소하기"></div>
+            
+            
+           
+    </form>
+</body>
+</html>

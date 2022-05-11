@@ -7,8 +7,8 @@
 <body>
 
 	<%@include file = "header.jsp" %>
-	<div class="container">
-		메인페이지
+	<div class="container main__container">
+		<img src="./img/main__img.jpg" width='70%'>
 	</div>
 	<%@include file = "footer.jsp" %>
 

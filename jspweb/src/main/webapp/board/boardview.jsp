@@ -32,7 +32,7 @@
 		%>
 	
 	
-		<h2 class="boardview_title"><%=board.getBtitle() %></h2>
+		<h4 class="boardview_title"><%=board.getBtitle() %></h4>
 		
 		<table class="table"> <!-- table : 부스트랩 테이블 클래스 -->
 			<tr> 
@@ -138,20 +138,6 @@
 		</table>
 		
 	</div>
-	<script>function replydelete( rno ){
-		$.ajax({
-			url : "replydelete" , 
-			data : { "rno" : rno } , 
-			success : function( result ){
-				if( result == 1 ){
-					alert("댓글 삭제 되었습니다.");
-					$("#replytable").load( location.href+" #replytable"); // 특정 태그 새로고침
-				}
-				else{ alert("삭제 실패(관리자에게 문의)"); } 
-			}
-		});
-	}
-</script>
 	<script src="/jspweb/js/board.js" type="text/javascript"></script>
 	
 	<%@include file ="../footer.jsp" %>

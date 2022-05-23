@@ -36,6 +36,12 @@
 						<li> <span  class="header_topmenu"> <%=loginid %>님 </span> · </li>
 						<li> <a href="/jspweb/logout"  class="header_topmenu">로그아웃</a> · </li>
 						<li> <a href="/jspweb/member/myshopping.jsp"  class="header_topmenu">나의쇼핑</a> · </li>
+						
+						<!-- 로그인 id가 admin이면  -->
+						<%  if( loginid.equals("admin") ){ %>
+							<li> <a href="/jspweb/admin/dashboard.jsp"  class="header_topmenu">관리자모드</a> </li>
+						<%} %>
+						
 					<%} %>
 						<li> <a href="/jspweb/board/boardlist.jsp?key=&keyword="  class="header_topmenu">자유게시판</a> </li>
 					</ul>
@@ -44,7 +50,7 @@
 		</div>  <!--  상단 메뉴 끝  -->
 		
 		<div class="navbar navbar-expand-md navbar-light bg-white">  <!--  본메뉴  -->
-			<ul class="navbar-nav col-md-12"> 
+			<ul class="navbar-nav col-md-12 justify-content-between"> 
 				<li class="nav-item"> <a href="#"> BIG SIZE </a> </li>
 				<li class="nav-item"> <a href="#" style="color: #00D8FF;"> MUSCLE-FIT </a> </li>
 				<li class="nav-item"> <a href="#" style="color: #0100FF;"> 1+1 이벤트 </a> </li>
@@ -67,13 +73,13 @@
 				<li class="nav-item"> <a href="#"> 악세사리 </a> </li>
 				<li class="nav-item"> <a href="#"> BEST </a> </li>
 				<li class="nav-item"> <a href="/jspweb/teamchatting.jsp"> 트레이닝 </a> </li>
-				<li class="nav-item"> <a href="#" style="color: #FFBB00;"> 모델처럼입자 </a> </li>
+				<li class="nav-item"> <a href="/jspweb/teammarble.jsp" style="color: #FFBB00;"> 모델처러입자 </a> </li>
 				<li class="nav-item"> <a href="#" style="color: #FF0000;"> 50% 할인 </a> </li>
 				<li class="nav-item"> 
 					<input type="text" class="header_input" size="13"> 
 					<a href="#"><i class="fas fa-search"></i></a>
 				</li>
-				<li class="nav-item"> <a href="#">장바구니<span class="shoppingbox">3</span></a></li>
+				<li class="nav-item"> <a href="/jspweb/product/productcart.jsp">장바구니<span class="shoppingbox">3</span></a></li>
 			</ul>
 		</div> <!-- 본 메뉴 끝 -->
 		
